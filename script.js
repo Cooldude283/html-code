@@ -39,17 +39,29 @@ const passwordInput = document.getElementById('password');
 const passwordStrength = document.getElementById('passwordStrength');
 
 function computeStrength(value) {
+  if (value.length < 6) {
+    return {text: 'Weak', color: '#c00'};
+  }
+
   let score = 0;
-  if (value.length >= 6) score += 1;
   if (/[a-z]/.test(value)) score += 1;
   if (/[A-Z]/.test(value)) score += 1;
   if (/[0-9]/.test(value)) score += 1;
   if (/[^A-Za-z0-9]/.test(value)) score += 1;
 
-  if (score <= 2) return {text: 'Weak', color: '#c00'};
-  if (score === 3) return {text: 'Fair', color: '#e67e22'};
-  if (score === 4) return {text: 'Good', color: '#2a9d8f'};
-  return {text: 'Strong', color: '#147b00'};
+  if (value.length >= 12 && score === 4) {
+    return {text: 'Strong', color: '#147b00'};
+  }
+
+  if (value.length >= 8 && score >= 3) {
+    return {text: 'Good', color: '#2a9d8f'};
+  }
+
+  if (score >= 2) {
+    return {text: 'Fair', color: '#e67e22'};
+  }
+
+  return {text: 'Weak', color: '#c00'};
 }
 
 if (passwordInput && passwordStrength) {
