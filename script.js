@@ -14,18 +14,11 @@ if (form && msg) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    console.log('Username:', username);
-    console.log('Password:', password);
+    // Do not expose credentials to console or page UI.
+    // No further processing is done here unless you add a secure API call.
 
     msg.style.color = '#108014';
-    msg.textContent = `Got input: ${username} / ${'*'.repeat(password.length)}`;
-
-    // Optional: send via fetch to server
-    // fetch('/login', {
-    //   method: 'POST',
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify({ username, password })
-    // });
+    msg.textContent = 'Form submitted successfully.';
 
     form.reset();
   });
