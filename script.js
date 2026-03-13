@@ -52,7 +52,12 @@ function computeStrength(value) {
   // Length bonus for high-entropy passwords
   if (value.length >= 12) score += 1;
   if (value.length >= 16) score += 1;
-  if (value.length >= 20) score += 1;
+  if (value.length >= 20) score += 2; // very long strength bump
+
+  // Very long passwords are strong by default
+  if (value.length >= 20) {
+    return {text: 'Strong', color: '#147b00'};
+  }
 
   if (score >= 6) {
     return {text: 'Strong', color: '#147b00'};
