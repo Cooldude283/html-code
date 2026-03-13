@@ -46,3 +46,22 @@ button {
 button[type="reset"] {
   background: #6c757d;
 }
+
+#togglePassword {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+}
+#togglePassword:hover { opacity: .85; }
+
+#togglePassword {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #0a4d8c;
+  cursor: pointer;
+}

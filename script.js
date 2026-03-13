@@ -6,8 +6,9 @@ if (form && msg) {
     e.preventDefault();
 
     const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
     const username = usernameInput.value.trim();
-    const password = document.getElementById('password').value;
+    const password = passwordInput.value;
 
     if (!username) {
       msg.style.color = '#c00';
@@ -16,9 +17,10 @@ if (form && msg) {
       return;
     }
 
-    if (!form.checkValidity()) {
+    if (!passwordInput.checkValidity()) {
       msg.style.color = '#c00';
       msg.textContent = 'Password must be 6+ chars, include uppercase, lowercase, and at least one number or symbol.';
+      passwordInput.focus();
       return;
     }
 
