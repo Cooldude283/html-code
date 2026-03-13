@@ -5,14 +5,22 @@ if (form && msg) {
   form.addEventListener('submit', e => {
     e.preventDefault();
 
+    const usernameInput = document.getElementById('username');
+    const username = usernameInput.value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!username) {
+      msg.style.color = '#c00';
+      msg.textContent = 'Username is required.';
+      usernameInput.focus();
+      return;
+    }
+
     if (!form.checkValidity()) {
       msg.style.color = '#c00';
       msg.textContent = 'Password must be 6+ chars, include uppercase, lowercase, and at least one number or symbol.';
       return;
     }
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
 
     // Do not expose credentials to console or page UI.
     // No further processing is done here unless you add a secure API call.
