@@ -53,7 +53,10 @@ function computeStrength(value) {
   if (value.length >= 12) score += 1;
   if (value.length >= 16) score += 1;
   if (value.length >= 20) score += 2; // very long strength bump
-
+  // Minimum good for 8+ chars and at least 2 categories
+  if (value.length >= 8 && score >= 2) {
+    return {text: 'Fair', color: '#e67e22'};
+  }
   // Very long passwords are strong by default
   if (value.length >= 20) {
     return {text: 'Strong', color: '#147b00'};
