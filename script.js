@@ -49,15 +49,18 @@ function computeStrength(value) {
   if (/[0-9]/.test(value)) score += 1;
   if (/[^A-Za-z0-9]/.test(value)) score += 1;
 
-  if (value.length >= 12 && score === 4) {
+  // Length bonus for high-entropy passwords
+  if (value.length >= 12) score += 1;
+  if (value.length >= 16) score += 1;
+  if (value.length >= 20) score += 1;
+
+  if (score >= 6) {
     return {text: 'Strong', color: '#147b00'};
   }
-
-  if (value.length >= 8 && score >= 3) {
+  if (score >= 4) {
     return {text: 'Good', color: '#2a9d8f'};
   }
-
-  if (score >= 2) {
+  if (score >= 3) {
     return {text: 'Fair', color: '#e67e22'};
   }
 
